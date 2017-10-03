@@ -8,9 +8,9 @@
 Comments:
 In the graph.in file, enter the links between the graph nodes in the form: 
 node1 space node2. In the last line enter the name of the nodes, the connection
- between which you want to check, in the form: node1 space node2. Run the 
- graph.py file. In the file graph.out, you will find the number 1 if the 
- connection is possible, else you will find the number 0.
+between which you want to check, in the form: node1 space node2. Run the 
+graph.py file. In the file graph.out, you will find the number 1 if the 
+connection is possible, else you will find the number 0.
 
 Author: Nazar Ponochevnyi
 '''
