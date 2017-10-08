@@ -1,6 +1,5 @@
 #-*-coding:utf8;-*-
 
-
 '''
 @Search in graph@
 
@@ -48,7 +47,6 @@ def dfs(graph, node, visited):
 graph = {}
 node_state = {}
 for node in nodes: add_dep(node)
-
 
 visited = dfs(graph, node1, [])
 result = 1 if node2 in visited else 0
