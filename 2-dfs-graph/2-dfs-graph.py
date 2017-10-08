@@ -1,7 +1,7 @@
 #-*-coding:utf8;-*-
 
 '''
-@Search in graph@
+<!--@ Search in graph @--!>
 
 Comments:
 In the 2-dfs-graph.in file, enter the links between the graph nodes in the
