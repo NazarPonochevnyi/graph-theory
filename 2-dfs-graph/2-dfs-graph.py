@@ -1,16 +1,15 @@
 #-*-coding:utf8;-*-
-#qpy:3
-#qpy:console
+
 
 '''
 @Search in graph@
 
 Comments:
-In the graph.in file, enter the links between the graph nodes in the form: 
-node1 space node2. In the last line enter the name of the nodes, the connection
-between which you want to check, in the form: node1 space node2. Run the 
-graph.py file. In the file graph.out, you will find the number 1 if the 
-connection is possible, else you will find the number 0.
+In the 2-dfs-graph.in file, enter the links between the graph nodes in the
+form: node1 space node2. In the last line enter the name of the nodes, the
+connection between which you want to check, in the form: node1 space node2.
+Run the 2-dfs-graph.py file. In the file 2-dfs-graph.out, you will find the
+number 1 if the connection is possible, else you will find the number 0.
 
 Author: Nazar Ponochevnyi
 '''
@@ -21,25 +20,24 @@ file = open('2-dfs-graph.in', 'r')
 data = [d.strip() for d in file.readlines()]
 file.close()
 nodes = data[:-1]
-node1 = str(data[-1].split()[0])
-node2 = str(data[-1].split()[1])
+node1 = int(data[-1].split()[0])
+node2 = int(data[-1].split()[1])
 
 
 # Functions
-def addDep(n):
-    if isinstance(graph.get(n.split()[0]), list):
-        graph[n.split()[0]].append(n.split()[1])
-    else:
-        graph[n.split()[0]] = []
-        graph[n.split()[0]].append(n.split()[1])
-    if isinstance(graph.get(n.split()[1]), list):
-        graph[n.split()[1]].append(n.split()[0])
-    else:
-        graph[n.split()[1]] = []
-        graph[n.split()[1]].append(n.split()[0])
+def add_dep(n):
+    n1 = int(n.split()[0])
+    n2 = int(n.split()[1])
+    node_state[n1] = False
+    node_state[n2] = False
+    if isinstance(graph.get(n1), list): graph[n1].append(n2)
+    else: graph[n1] = [n2]
+    if isinstance(graph.get(n2), list): graph[n2].append(n1)
+    else: graph[n2] = [n1]
 
 def dfs(graph, node, visited):
-    if node not in visited:
+    if not node_state.get(node):
+        node_state[node] = True
         visited.append(node)
         for n in graph[node]:
             dfs(graph, n, visited)
@@ -48,7 +46,9 @@ def dfs(graph, node, visited):
 
 # Basic processes
 graph = {}
-for node in nodes: addDep(node)
+node_state = {}
+for node in nodes: add_dep(node)
+
 
 visited = dfs(graph, node1, [])
 result = 1 if node2 in visited else 0
