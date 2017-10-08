@@ -27,14 +27,14 @@ node2 = str(data[-1].split()[1])
 
 # Functions
 def addDep(n):
-    try:
+    if isinstance(graph.get(n.split()[0]), list):
         graph[n.split()[0]].append(n.split()[1])
-    except:
+    else:
         graph[n.split()[0]] = []
         graph[n.split()[0]].append(n.split()[1])
-    try:
+    if isinstance(graph.get(n.split()[1]), list):
         graph[n.split()[1]].append(n.split()[0])
-    except:
+    else:
         graph[n.split()[1]] = []
         graph[n.split()[1]].append(n.split()[0])
 
@@ -51,8 +51,7 @@ graph = {}
 for node in nodes: addDep(node)
 
 visited = dfs(graph, node1, [])
-result = 0
-if node2 in visited: result = 1
+result = 1 if node2 in visited else 0
 
 
 # Output values
