@@ -27,29 +27,25 @@ node2 = int(data[-1].split()[1])
 def add_dep(n):
     n1 = int(n.split()[0])
     n2 = int(n.split()[1])
-    node_state[n1] = False
-    node_state[n2] = False
     if isinstance(graph.get(n1), list): graph[n1].append(n2)
     else: graph[n1] = [n2]
     if isinstance(graph.get(n2), list): graph[n2].append(n1)
     else: graph[n2] = [n1]
 
-def dfs(graph, node, visited):
-    if not node_state.get(node):
-        node_state[node] = True
-        visited.append(node)
+def dfs(graph, node, node_state):
+    if not node_state[node - 1]:
+        node_state[node - 1] = True
         for n in graph[node]:
-            dfs(graph, n, visited)
-    return visited
+            dfs(graph, n, node_state)
+    return node_state
 
 
 # Basic processes
 graph = {}
-node_state = {}
 for node in nodes: add_dep(node)
 
-visited = dfs(graph, node1, [])
-result = 1 if node2 in visited else 0
+node_state = dfs(graph, node1, [False for _ in range(len(graph.keys()))])
+result = 1 if node_state[node2] else 0
 
 
 # Output values
