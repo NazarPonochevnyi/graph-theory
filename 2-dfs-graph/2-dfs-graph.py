@@ -19,22 +19,22 @@ file = open('2-dfs-graph.in', 'r')
 data = [d.strip() for d in file.readlines()]
 file.close()
 nodes = data[:-1]
-node1 = int(data[-1].split()[0])
-node2 = int(data[-1].split()[1])
+node1 = int(data[-1].split()[0]) - 1
+node2 = int(data[-1].split()[1]) - 1
 
 
 # Functions
 def add_dep(n):
-    n1 = int(n.split()[0])
-    n2 = int(n.split()[1])
+    n1 = int(n.split()[0]) - 1
+    n2 = int(n.split()[1]) - 1
     if isinstance(graph.get(n1), list): graph[n1].append(n2)
     else: graph[n1] = [n2]
     if isinstance(graph.get(n2), list): graph[n2].append(n1)
     else: graph[n2] = [n1]
 
 def dfs(graph, node, node_state):
-    if not node_state[node - 1]:
-        node_state[node - 1] = True
+    if not node_state[node]:
+        node_state[node] = True
         for n in graph[node]:
             dfs(graph, n, node_state)
     return node_state
