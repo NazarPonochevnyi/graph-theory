@@ -1,1 +1,1 @@
-# Some problems in graph theory
+# Solution of problems in the theory of graphs
