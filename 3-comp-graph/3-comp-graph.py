@@ -36,11 +36,9 @@ def dfs(graph, node, node_state):
     return node_state
 
 def comp(graph, node_state, count):
-    print(node_state)
-    if node_state[2] == False: # it's line have error
-        count += 1
+    if node_state.count(False):
         node_state = dfs(graph, node_state.index(False), node_state)
-        comp(graph, node_state, count)
+        return comp(graph, node_state, count + 1)
     return count
 
 
@@ -49,7 +47,7 @@ graph = [[] for _ in range(count_of_nodes)]
 for node in nodes: add_dep(node)
 
 node_state = [False for _ in range(count_of_nodes)]
-result = comp(graph, node_state, 1)
+result = comp(graph, node_state, 0)
 
 
 # Output values
