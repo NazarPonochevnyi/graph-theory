@@ -4,9 +4,9 @@
 <!--@ Component of Graph @--!>
 
 Comments:
-In the 3-cgc-graph.in file, in first line, enter count of nodes. In the next
+In the 3-comp-graph.in file, in first line, enter count of nodes. In the next
 lines enter the links between the graph nodes in the form: node1 space node2.
-Run the 3-cgc-graph.py file. In the file 3-cgc-graph.out, you will find the
+Run the 3-comp-graph.py file. In the file 3-comp-graph.out, you will find the
 component of the graph.
 
 Author: Nazar Ponochevnyi
