@@ -36,7 +36,7 @@ def dfs(graph, node, node_state):
     return node_state
 
 def comp(graph, node_state, count):
-    if node_state.count(False):
+    if False in node_state:
         node_state = dfs(graph, node_state.index(False), node_state)
         return comp(graph, node_state, count + 1)
     return count
