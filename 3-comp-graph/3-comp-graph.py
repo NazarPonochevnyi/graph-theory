@@ -43,10 +43,12 @@ def comp(graph, node_state, count):
 
 
 # Basic processes
-graph = [[] for _ in range(count_of_nodes)]
+graph = []
+node_state = []
+for _ in range(count_of_nodes):
+    graph.append([])
+    node_state.append(False)
 for node in nodes: add_dep(node)
-
-node_state = [False for _ in range(count_of_nodes)]
 result = comp(graph, node_state, 0)
 
 
