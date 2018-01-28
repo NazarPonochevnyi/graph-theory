@@ -36,9 +36,10 @@ def dfs(graph, node, node_state):
     return node_state
 
 def comp(graph, node_state, count):
-    if False in node_state:
-        node_state = dfs(graph, node_state.index(False), node_state)
-        return comp(graph, node_state, count + 1)
+    for i_state in range(len(node_state)):
+        if not node_state[i_state]:
+            node_state = dfs(graph, i_state, node_state)
+            count += 1
     return count
 
 
@@ -54,5 +55,5 @@ result = comp(graph, node_state, 0)
 
 # Output values
 file = open('3-comp-graph.out', 'w')
-file.write(str(result) + '\n')
+file.write('{}\n'.format(result))
 file.close()
